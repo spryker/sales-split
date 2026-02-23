@@ -93,22 +93,26 @@ class OrderItemSplitTest extends Unit
         $validatorMock
             ->expects($this->once())
             ->method('isValid')
-            ->will($this->returnValue(true));
+            ->willReturn(true);
 
         $salesOrderItemQueryMock
             ->expects($this->once())
-            ->method('findOneByIdSalesOrderItem')
-            ->will($this->returnValue($orderItem));
+            ->method('__call')
+            ->willReturnCallback(function ($name) use ($orderItem) {
+                if ($name === 'findOneByIdSalesOrderItem') {
+                    return $orderItem;
+                }
+            });
 
         $salesQueryContainerMock
             ->expects($this->once())
             ->method('querySalesOrderItem')
-            ->will($this->returnValue($salesOrderItemQueryMock));
+            ->willReturn($salesOrderItemQueryMock);
 
         $calculatorMock
             ->expects($this->once())
             ->method('calculateQuantityAmountLeft')
-            ->will($this->returnValue($quantityForOld));
+            ->willReturn($quantityForOld);
 
         $itemSplit = new OrderItemSplit($validatorMock, $salesQueryContainerMock, $calculatorMock);
         $itemSplit->setDatabaseConnection($databaseConnectionMock);
@@ -146,7 +150,6 @@ class OrderItemSplitTest extends Unit
     {
         $salesOrderItemQueryMock = $this
             ->getMockBuilder(SpySalesOrderQuery::class)
-            ->addMethods(['findOneByIdSalesOrderItem'])
             ->disableOriginalConstructor()
             ->getMock();
 

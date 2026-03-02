@@ -47,11 +47,6 @@ class OrderItemSplit implements OrderItemSplitInterface
      */
     protected $calculator;
 
-    /**
-     * @param \Spryker\Zed\SalesSplit\Business\Model\Validation\ValidatorInterface $validator
-     * @param \Spryker\Zed\Sales\Persistence\SalesQueryContainerInterface $salesQueryContainer
-     * @param \Spryker\Zed\SalesSplit\Business\Model\CalculatorInterface $splitCalculator
-     */
     public function __construct(
         ValidatorInterface $validator,
         SalesQueryContainerInterface $salesQueryContainer,
@@ -96,12 +91,6 @@ class OrderItemSplit implements OrderItemSplitInterface
             );
     }
 
-    /**
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $salesOrderItemEntity
-     * @param int $quantityToSplit
-     *
-     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderItem
-     */
     protected function executeSplitTransaction(SpySalesOrderItem $salesOrderItemEntity, int $quantityToSplit): SpySalesOrderItem
     {
         $newSalesOrderItem = $this->copy($salesOrderItemEntity, $quantityToSplit);

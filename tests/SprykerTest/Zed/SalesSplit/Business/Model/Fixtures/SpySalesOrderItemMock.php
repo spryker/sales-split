@@ -29,19 +29,11 @@ class SpySalesOrderItemMock extends OriginalSpySalesOrderItem
         return $this->propelModelCopy;
     }
 
-    /**
-     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderItem
-     */
     public function getCreatedCopy(): OriginalSpySalesOrderItem
     {
         return $this->propelModelCopy;
     }
 
-    /**
-     * @param \Propel\Runtime\Connection\ConnectionInterface|null $con
-     *
-     * @return int
-     */
     public function save(?ConnectionInterface $con = null): int
     {
         return 1;

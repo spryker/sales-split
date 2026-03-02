@@ -42,9 +42,6 @@ class OrderItemSplitTest extends Unit
 
     ];
 
-    /**
-     * @return void
-     */
     public function testIsOrderItemDataCopied(): void
     {
         $spySalesOrderItem = $this->createOrderItem();
@@ -76,12 +73,6 @@ class OrderItemSplitTest extends Unit
         $this->assertEquals($oldSalesOrderItemArray, $copyOfItemSalesOrderItemArray);
     }
 
-    /**
-     * @param \SprykerTest\Zed\SalesSplit\Business\Model\Fixtures\SpySalesOrderItemMock $orderItem
-     * @param int $quantityForOld
-     *
-     * @return \Spryker\Zed\SalesSplit\Business\Model\OrderItemSplit
-     */
     protected function createOrderItemSplitter(SpySalesOrderItemMock $orderItem, int $quantityForOld): OrderItemSplit
     {
         $validatorMock = $this->createValidatorMock();
@@ -181,12 +172,6 @@ class OrderItemSplitTest extends Unit
         return $databaseConnectionMock;
     }
 
-    /**
-     * @param array $salesOrderItems
-     * @param array $notCopiedFields
-     *
-     * @return array
-     */
     protected function filterOutNotCopiedFields(array $salesOrderItems, array $notCopiedFields): array
     {
         foreach ($salesOrderItems as $key => $value) {
@@ -198,9 +183,6 @@ class OrderItemSplitTest extends Unit
         return $salesOrderItems;
     }
 
-    /**
-     * @return \SprykerTest\Zed\SalesSplit\Business\Model\Fixtures\SpySalesOrderItemMock
-     */
     protected function createOrderItem(): SpySalesOrderItemMock
     {
         $spySalesOrderItem = new SpySalesOrderItemMock();

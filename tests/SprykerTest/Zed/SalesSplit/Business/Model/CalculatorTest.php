@@ -24,9 +24,6 @@ use Spryker\Zed\SalesSplit\Business\Model\Calculator;
  */
 class CalculatorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testCalculateAmountLeft(): void
     {
         $calculator = new Calculator();

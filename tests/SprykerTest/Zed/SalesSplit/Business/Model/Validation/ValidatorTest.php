@@ -29,9 +29,6 @@ use Spryker\Zed\SalesSplit\Business\Model\Validation\Validator;
  */
 class ValidatorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testInvalidQuantity(): void
     {
         $validator = $this->getValidator();
@@ -44,9 +41,6 @@ class ValidatorTest extends Unit
         $this->assertSame(Messages::VALIDATE_QUANTITY_MESSAGE, $validationMessages[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testValidateIsProductBundled(): void
     {
         $validator = $this->getValidator();
@@ -60,9 +54,6 @@ class ValidatorTest extends Unit
         $this->assertSame(Messages::VALIDATE_BUNDLE_MESSAGE, $validationMessages[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testValidateIsDiscounted(): void
     {
         $validator = $this->getValidator();
@@ -79,9 +70,6 @@ class ValidatorTest extends Unit
         $this->assertSame(Messages::VALIDATE_DISCOUNTED_MESSAGE, $validationMessages[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testValidateIsOptionDiscounted(): void
     {
         $validator = $this->getValidator();
@@ -105,9 +93,6 @@ class ValidatorTest extends Unit
         $this->assertSame(Messages::VALIDATE_DISCOUNTED_OPTION_MESSAGE, $validationMessages[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testValidOrderItem(): void
     {
         $validator = $this->getValidator();
@@ -118,19 +103,11 @@ class ValidatorTest extends Unit
         $this->assertTrue($validateResponse);
     }
 
-    /**
-     * @return \Spryker\Zed\SalesSplit\Business\Model\Validation\Validator
-     */
     protected function getValidator(): Validator
     {
         return new Validator();
     }
 
-    /**
-     * @param int $quantity
-     *
-     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderItem
-     */
     protected function getSalesOrderItem(int $quantity = 2): SpySalesOrderItem
     {
         $spySalesOrderItem = new SpySalesOrderItem();
